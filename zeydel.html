@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab1</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div id="app">
+    <form>
+        <div class="l-flex-container-horizontal" v-for="(row, rowIndex) in matrix">
+            <div v-for="(el, index) in row" class="l-flex-container-horizontal">
+                <div class="form-group">
+                    <input type="number" v-model="row[index]" class="form-control">
+                    <label>x<span v-text="index + 1"></span></label>
+                </div>
+                <div class="sign" v-text="index === row.length - 1 ? '=' : '+'"></div>
+            </div>
+            <div class="form-group">
+                <input type="number" v-model="vector[rowIndex]" class="form-control">
+            </div>
+        </div>
+        <button class="btn btn-primary" type="button" v-on:click="calculate()">Calculate</button>
+        <button class="btn btn-secondary" type="button" v-on:click="reset()">Reset</button>
+    </form>
+    <div v-if="calculated">
+        <hr>
+        <table class="container">
+            <tr v-for="row in gSHvilkoy">
+                <td v-for="el in row" v-text="el"></td>
+            </tr>
+        </table>
+        <hr>
+        <table class="l-full-width">
+            <tr>
+                <th>#</th>
+                <th>x1</th>
+                <th>x2</th>
+                <th>x3</th>
+                <th>x4</th>
+                <th>delta Sf</th>
+                <th>delta Okt</th>
+                <th>delta Kub</th>
+            </tr>
+            <tr v-for="(root, rootIndex) in roots">
+                <td v-text="rootIndex + 1"></td>
+                <td v-for="rootValue in root" v-text="rootValue"></td>
+                <td v-text="deltas.sf[rootIndex]"></td>
+                <td v-text="deltas.okt[rootIndex]"></td>
+                <td v-text="deltas.kub[rootIndex]"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="./vue@2.2.5.js"></script>
+<script src="./node_modules/mathjs/dist/math.min.js"></script>
+<script src="./zeydel.js"></script>
+</body>
+</html>

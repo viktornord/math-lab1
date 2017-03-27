@@ -1,0 +1,31 @@
+* {
+	font-size: 2rem;
+}
+form {
+	margin: 1rem;
+}
+.l-flex-container-horizontal {
+	display: flex;
+}
+.form-group {
+	display: flex;
+	align-items: center;
+}
+input + label {
+	margin-left: 1rem;
+}
+.sign {
+	margin: 0 1rem;
+}
+.l-text-bold {
+	font-weight: bold;
+	font-size: 12px;
+}
+td, th {
+	border: 1px solid;
+	padding: .5rem;
+	text-align: center;
+}
+.l-full-width {
+	width: 100%;
+}
